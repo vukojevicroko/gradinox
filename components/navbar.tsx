@@ -1,141 +1,160 @@
-import {
-  Navbar as HeroUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@heroui/navbar";
-import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
-import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
-import { link as linkStyles } from "@heroui/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
+"use client";
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+const navItems = [
+  { href: "/projekt-otok", label: "Projekt Otok" },
+  { href: "/galerija", label: "Galerija" },
+  { href: "/o-nama", label: "O nama" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // kad promijeniš rutu, zatvori mobilni meni
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
-          </NextLink>
-        </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
+    <header
+      className={`sticky top-0 z-40 border-b transition-all duration-300 ${
+        isScrolled
+          ? "border-slate-200 bg-white/90 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/90"
+          : "border-transparent bg-white/0 dark:bg-slate-900/0"
+      }`}
+    >
+      <div
+        className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-all duration-300 ${
+          isScrolled ? "py-2" : "py-4"
+        }`}
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
+        {/* LOGO lijevo */}
+        <Link href="/" className="flex items-center gap-3">
+          {/* Placeholder za logo – ti ćeš ovdje ubacit svoj <Image /> */}
+          <div
+            className={`rounded-full border transition-all duration-300 ${
+              isScrolled
+                ? "h-8 w-8 border-slate-400 dark:border-slate-500"
+                : "h-10 w-10 border-slate-500 dark:border-slate-400"
+            }`}
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-900 dark:text-slate-50">
+              Gradinox
+            </span>
+            <span className="text-[0.68rem] text-slate-500 dark:text-slate-400">
+              gradnja · od 2025.
+            </span>
+          </div>
         </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
 
-      <NavbarMenu>
-        {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+        {/* DESKTOP NAV */}
+        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+  {navItems.map((item) => {
+    const isActive =
+      item.href === "/"
+        ? pathname === "/"
+        : pathname.startsWith(item.href);
+
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        className={`relative pb-1 transition-colors duration-200 ${
+          isActive
+            ? "text-slate-900 dark:text-slate-50"
+            : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+        }`}
+      >
+        {item.label}
+        <span
+          className={`
+            pointer-events-none
+            absolute 
+            -bottom-0.5 
+            left-0 
+            h-[2px] 
+            w-full 
+            origin-left 
+            rounded-full 
+            bg-slate-900 
+            dark:bg-slate-100 
+            transition-transform 
+            duration-300
+            ${isActive ? "scale-x-100" : "scale-x-0"}
+          `}
+        />
+      </Link>
+    );
+  })}
+</nav>
+
+
+        {/* MOBILE TOGGLER */}
+        <button
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800 md:hidden"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Otvori navigaciju"
+        >
+          <span className="sr-only">Menu</span>
+          <div className="space-y-[5px]">
+            <span
+              className={`block h-[2px] w-4 rounded-full bg-slate-700 transition-all dark:bg-slate-200 ${
+                menuOpen ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`block h-[2px] w-4 rounded-full bg-slate-700 transition-all dark:bg-slate-200 ${
+                menuOpen ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </div>
+        </button>
+      </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="border-t border-slate-200 bg-white/95 px-4 py-3 text-sm shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/95 md:hidden">
+          <nav className="flex flex-col gap-2">
+            {navItems.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-md px-2 py-1.5 transition-colors ${
+                    isActive
+                      ? "bg-slate-900 text-slate-50 dark:bg-slate-100 dark:text-slate-900"
+                      : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
-      </NavbarMenu>
-    </HeroUINavbar>
+      )}
+    </header>
   );
-};
+}
