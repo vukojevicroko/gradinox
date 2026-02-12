@@ -4,11 +4,12 @@ import Link from "next/link";
 import { katovi, stanovi } from "@/data/projektOtok";
 
 type Props = {
-  params: { stanId: string };
+  params: Promise<{ stanId: string }>;
 };
 
-export default function StanPage({ params }: Props) {
-  const stan = stanovi.find((s) => s.id === params.stanId);
+export default async function StanPage({ params }: Props) {
+  const { stanId } = await params;
+  const stan = stanovi.find((s) => s.id === stanId);
 
   if (!stan) {
     return notFound();

@@ -1,11 +1,18 @@
+// app/(...) / layout.tsx  (gdje god ti je ovaj DocsLayout)
+// FULL-WIDTH layout: ne guši hero sekcije i sticky elemente
+
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-lg text-center justify-center">
+    <section className="w-full">
+      {/* 
+        Wrapper koji daje normalan vertikalni spacing,
+        ali NE ograničava širinu stranice.
+      */}
+      <div className="w-full">
         {children}
       </div>
     </section>

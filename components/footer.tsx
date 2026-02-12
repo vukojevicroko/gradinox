@@ -97,7 +97,7 @@ export default function Footer() {
 
       {/* Donja linija */}
       <div className="mx-auto mt-12 max-w-6xl px-4 text-center text-xs text-slate-500 dark:text-slate-400">
-        © {new Date().getFullYear()} Gradinox Gradnja · Sva prava pridržana
+        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Gradinox Gradnja · Sva prava pridržana
       </div>
     </footer>
   );

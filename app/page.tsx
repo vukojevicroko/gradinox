@@ -57,7 +57,7 @@ export default function HomePage() {
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
                   Fokus:
                 </span>
-                <span>kvaliteta gradnje · pregledni tlocrti · renderi dizajna</span>
+                <span>kvaliteta gradnje · poštivanje rokova · jasni ciljevi</span>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function HomePage() {
         <div className="mt-4 px-4 pb-10 lg:hidden">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-xl">
             <Image
-              src="/images/projex-From-Foundations-to-the-Roof.jpg"
+              src="/renders/Image13.png"
               alt="Projekt Otok – vizual zgrade"
               fill
               className="object-cover"
@@ -82,15 +82,16 @@ export default function HomePage() {
         <div className="absolute inset-y-4 right-0 z-0 hidden w-[55%] lg:block">
             <div className="hero-diagonal hero-stroke relative h-full w-full overflow-hidden rounded-l-[3rem] bg-slate-900 shadow-[0_26px_80px_rgba(15,23,42,0.45)]">
             <Image
-              src="/images/projex-From-Foundations-to-the-Roof.jpg"
-              alt="Projekt Otok – vizual zgrade"
+              src="/renders/Image13.png"
+              alt=""
               fill
               className="object-cover"
             />
           </div>
         </div>
 
-        {/* Kartica preko slike na desktopu */}
+        {/* Kartica preko slike na desktopu /}
+        {/*
         <div className="absolute bottom-10 right-[10%] z-20 hidden max-w-sm lg:block">
           <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 text-xs text-slate-700 shadow-xl backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
             <p className="font-semibold text-slate-900 dark:text-slate-50">
@@ -102,6 +103,7 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        */}
       </section>
 
 
@@ -115,11 +117,21 @@ export default function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             {/* Slika / placeholder – ti ćeš tu kasnije ubaciti render / fotku */}
             <div className="fade-in-up">
-              <div className="aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700 dark:bg-slate-800" />
-              <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-                Vizualni prikaz projekta – ovdje dolazi render ili fotografija
-                povezano s Projektom Otok ili referentnim gradilištem.
-              </p>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md overflow-hidden w-full">
+                <div className="w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md dark:border-slate-700">
+                {/* Bitno: relative + aspect */}
+                  <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src="/renders/Image22.png"
+                    alt="Projekt Otok – vizual"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 700px"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
             </div>
 
             {/* Tekst desno */}
@@ -172,11 +184,21 @@ export default function HomePage() {
 
             {/* Slika desno */}
             <div className="fade-in-up-delay">
-              <div className="aspect-[4/3] w-full rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700 dark:bg-slate-800" />
-              <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-                Ovdje možeš kasnije ubaciti interijer, tlocrt ili detalj koji
-                dodatno gradi povjerenje i osjećaj uredno vođenog projekta.
-              </p>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md overflow-hidden w-full">
+                <div className="w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md dark:border-slate-700">
+                  {/* Bitno: relative + aspect */}
+                 <div className="relative aspect-[4/3] w-full">
+                  <Image
+                      src="/renders/Image24.png"
+                      alt="Projekt Otok – interijer"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 700px"
+                      priority
+                  />
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -249,7 +271,7 @@ export default function HomePage() {
                 Renderi završnog izgleda
               </h3>
               <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                Realistični renderi eksterijera i interijera pomažu stvoriti
+                Realistični renderi eksterijera pomažu stvoriti
                 jasnu sliku o tome kako će zgrada izgledati nakon završetka.
               </p>
             </div>

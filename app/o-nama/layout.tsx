@@ -4,8 +4,13 @@ export default function AboutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-lg text-center justify-center">
+    <section className="w-full px-6 py-10 md:px-12 md:py-14">
+      {/* 
+        Glavni container:
+        - max-w-7xl: široko i pro (ne preširoko)
+        - mx-auto: centriranje kontejnera na velikim ekranima
+      */}
+      <div className="mx-auto w-full max-w-7xl">
         {children}
       </div>
     </section>

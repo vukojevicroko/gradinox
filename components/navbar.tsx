@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "/projekt-otok", label: "Projekt Otok" },
-  { href: "/galerija", label: "Galerija" },
   { href: "/o-nama", label: "O nama" },
-  { href: "/kontakt", label: "Kontakt" },
 ];
 
 export default function Navbar() {

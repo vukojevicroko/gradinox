@@ -17,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hr">
-      <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50" >
+      <body
+        className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50"
+        suppressHydrationWarning
+      >
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">
