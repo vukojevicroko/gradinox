@@ -17,18 +17,15 @@ export default function HomePage() {
             </p>
 
             <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl dark:text-slate-50">
-              Pouzdana novogradnja{" "}
-              <span className="whitespace-nowrap">na Projektu Otok</span>
+              Projekt Otok-{" "}
+              <span className="whitespace-nowrap">promišljena novogradnja</span>
             </h1>
             <p className="mt-2 max-w-xl text-lg font-normal text-slate-600 dark:text-slate-300 sm:text-xl">
-              uredna dokumentacija, jasni tlocrti i realistični renderi.
+              Arhitektonska jasnoća. Funkcionalni tlocrti. Sigurna investicija.
             </p>
 
             <p className="mt-5 max-w-xl text-sm text-slate-600 dark:text-slate-300">
-              Gradinox gradnja je građevinska tvrtka osnovana 2025. godine s
-              fokusom na jasno prezentirane projekte. Projekt Otok donosi
-              preglednu strukturu katova i stanova, s tlocrtima i vizualima koji
-              pomažu kupcima i ulagačima donijeti pravu odluku.
+              Gradinox Gradnja razvija projekte u kojima su struktura, dokumentacija i vizualna prezentacija potpuno transparentni. Projekt Otok osmišljen je kako bi svaka odluka bila jasna, sigurna i bez nepoznanica.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -38,26 +35,22 @@ export default function HomePage() {
               >
                 Pogledaj Projekt Otok
               </Link>
-              <Link
-                href="/kontakt"
+              <a
+                href="#kontakt"
                 className="rounded-full border border-slate-300 bg-white px-6 py-2.5 text-sm font-medium text-slate-800 transition hover:border-slate-400 hover:bg-slate-100 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
               >
-                Kontaktiraj Gradinox
-              </Link>
+                Kontaktirajte nas
+              </a>
             </div>
 
             {/* mini trust bar */}
             <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
               <div className="flex items-center gap-2">
                 <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                <span>U tijeku pripreme Projekta Otok</span>
+                <span>Status projekta: U fazi pripreme i projektiranja</span>
               </div>
-              <span className="hidden h-3 w-px bg-slate-300 dark:bg-slate-600 sm:inline-block" />
+              <span className="hidden h-3 bg-slate-300 dark:bg-slate-600 sm:inline-block" />
               <div className="flex flex-wrap items-center gap-2">
-                <span className="font-semibold text-slate-700 dark:text-slate-200">
-                  Fokus:
-                </span>
-                <span>kvaliteta gradnje · poštivanje rokova · jasni ciljevi</span>
               </div>
             </div>
           </div>
@@ -89,21 +82,6 @@ export default function HomePage() {
             />
           </div>
         </div>
-
-        {/* Kartica preko slike na desktopu /}
-        {/*
-        <div className="absolute bottom-10 right-[10%] z-20 hidden max-w-sm lg:block">
-          <div className="rounded-2xl border border-slate-200 bg-white/90 p-4 text-xs text-slate-700 shadow-xl backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
-            <p className="font-semibold text-slate-900 dark:text-slate-50">
-              Pregledan projekt za kupce i ulagače
-            </p>
-            <p className="mt-1 text-[0.72rem] leading-relaxed">
-              Stranica Projekta Otok omogućuje brz uvid u katove, stanove,
-              tlocrte i rendere – bez lutanja po PDF-ovima i dokumentima.
-            </p>
-          </div>
-        </div>
-        */}
       </section>
 
 
@@ -136,25 +114,32 @@ export default function HomePage() {
 
             {/* Tekst desno */}
             <div className="fade-in-up-delay">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                Gradinox gradnja
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                Kako gradimo
               </p>
-              <h2 className="mt-3 text-xl font-semibold text-slate-900 dark:text-slate-50">
-                Uredan, ozbiljan pristup gradnji od prvog dana.
+              <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-slate-50">
+                Dosljedan i strukturiran pristup gradnji.
               </h2>
-              <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
-                Gradinox gradnja je nova građevinska tvrtka osnovana 2025.
-                godine, s jasnim ciljem: izvoditi projekte na način koji je
-                uredan, predvidljiv i transparentan za kupce i ulagače. Svaki
-                korak – od dokumentacije do završnih radova – strukturiran je i
-                vođen tako da se zna što se događa i kada.
+              <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
+                Gradinox Gradnja razvija projekte s jasnom organizacijom, preciznom dokumentacijom i kontroliranim procesima izvedbe. Svaka faza – od planiranja do završnih radova – vođena je transparentno i s jasno definiranim rokovima.
               </p>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Fokus je na kvalitetnoj izvedbi, suradnji s provjerenim
-                partnerima i poštivanju dogovorenih rokova. Na taj način gradimo
-                povjerenje i ime koje se u svakodnevnim razgovorima spominje uz
-                vodeće izvođače na tržištu.
+              <p className="mt-3 text-base text-slate-600 dark:text-slate-300">
+                Suradnja s provjerenim partnerima i fokus na kvaliteti izvedbe temelj su našeg pristupa. Gradimo projekte koji su tehnički promišljeni i dugoročno pouzdani.
               </p>
+              <div className="mt-4 text-center">
+                <a
+                  href="#partneri"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                  Naši partneri
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -162,24 +147,32 @@ export default function HomePage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             {/* Tekst lijevo */}
             <div className="fade-in-up">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                 Kupci i ulagači
               </p>
-              <h2 className="mt-3 text-xl font-semibold text-slate-900 dark:text-slate-50">
-                Jasna komunikacija i pregledan uvid u projekt.
+              <h2 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-slate-50">
+                Transparentnost kao standard.
               </h2>
-              <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">
-                Bilo da se radi o kupcu stana ili ulagaču, cilj nam je da svaka
-                osoba koja dođe na stranicu Projekta Otok u nekoliko minuta
-                dobije jasan pregled projekta: gdje se gradi, kako izgleda
-                zgrada, kakvi su tlocrti stanova i u kojoj je fazi izvođenje.
+              <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
+                Kupci i investitori imaju jasan pregled svake faze projekta – od početnog koncepta i urbanističkog planiranja do završne izvedbe. Svaka informacija strukturirana je tako da je lako razumljiva i dostupna bez dodatnih upita ili nejasnoća.
               </p>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-                Kroz tlocrte, rendere i kratke, konkretne opise, svatko može
-                donijeti informiranu odluku. Stranica nije tu samo kao
-                prezentacija, već kao alat za donošenje odluka – za kupce,
-                ulagače i partnere.
+              <p className="mt-3 text-base text-slate-600 dark:text-slate-300">
+                Detaljni tlocrti, realistični prikazi i jasno definirani podaci o stanovima omogućuju brzu i sigurnu procjenu vrijednosti. Projekt Otok nije predstavljen samo vizualno, već sistematično – kako bi svaka odluka bila informirana, racionalna i dugoročno promišljena. Transparentna komunikacija temelj je povjerenja koje gradimo s kupcima i partnerima.
               </p>
+              <div className="mt-4 text-center">
+                <Link
+                  href="/o-nama"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+                >
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  Više o nama
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
             </div>
 
             {/* Slika desno */}
@@ -271,8 +264,7 @@ export default function HomePage() {
                 Renderi završnog izgleda
               </h3>
               <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                Realistični renderi eksterijera pomažu stvoriti
-                jasnu sliku o tome kako će zgrada izgledati nakon završetka.
+                Realistični prikazi eksterijera omogućuju jasan uvid u arhitektonski identitet i konačan izgled projekta.
               </p>
             </div>
 
@@ -333,7 +325,7 @@ export default function HomePage() {
           </div>
         </div>
               {/* SEKCIJA: Partneri i suradnje */}
-      <section className=" bg-white py-24 dark:border-slate-800 dark:bg-slate-900">
+      <section id="partneri" className=" bg-white py-24 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-4">
           <div className="fade-in-up flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>

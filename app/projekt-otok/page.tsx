@@ -9,6 +9,7 @@ type Building = {
   title: string;
   subtitle: string;
   progress: number; // 0-100
+  apartments: number;
 };
 
 function useIsMobile(breakpointPx = 768) {
@@ -50,13 +51,13 @@ export default function ProjektOtokPage() {
 
   // === Project data (placeholder, po tvom promptu) ===
   const projectTitle = "Projekt Otok"
-  const overall = 43; // (40 + 28 + 60) / 3 ≈ 43%
+  const overall = 0; // (0 + 0 + 0) / 3 = 0%
 
   const buildings: Building[] = useMemo(
     () => [
-      { key: "A", title: "Building A", subtitle: "Mixed-Use", progress: 40 },
-      { key: "B", title: "Building B", subtitle: "Residential", progress: 28 },
-      { key: "C", title: "Building C", subtitle: "Storage", progress: 60 },
+      { key: "A", title: "Zgrada A", subtitle: "Stambena upotreba", progress: 0, apartments: 6 },
+      { key: "B", title: "Zgrada B", subtitle: "Stambena upotreba", progress: 0, apartments: 6 },
+      { key: "C", title: "Zgrada C", subtitle: "Stambena upotreba", progress: 0, apartments: 23 },
     ],
     []
   );
@@ -143,7 +144,7 @@ const HERO_URL =
               </p>
             </div>
             <div className="hidden min-[1024px]:block text-sm text-slate-600 dark:text-slate-300">
-              Overall: <span className="font-semibold">{overall}%</span>
+              Ukupno: <span className="font-semibold">{overall}%</span>
             </div>
           </div>
 
@@ -213,24 +214,24 @@ function Dashboard({
   projectTitle: string;
 }) {
   return (
-    <div className="rounded-2xl bg-slate-900/90 text-white shadow-[0_30px_90px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur">
+    <div className="rounded-2xl bg-slate-900/90 text-white shadow-[0_30px_90px_rgba(0,0,0,0.35)] ring-1 ring-white/10 backdrop-blur py-8">
       {/* TOP: Title + tagline */}
       <div className="flex flex-col gap-2 px-6 py-6 md:px-8">
         <div className="text-2xl font-semibold tracking-tight md:text-3xl">
           {projectTitle}
         </div>
         <div className="text-sm text-white/70">
-          Three Structures. One Vision. Masterfully Coordinated.
+          Tri zgrade. Jedna vizija. Majstorski koordinirano.
         </div>
       </div>
 
       {/* METADATA BAR (4 stats) */}
       <div className="mx-6 rounded-xl bg-black/35 px-5 py-4 md:mx-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <MetaItem label="Total Sq Ft" value="45,000" sub="SQ FT" icon="/icons/measurement.png" />
-          <MetaItem label="Apartments" value="26" sub="APARTMENTS" icon="/icons/house-key.png" />
-          <MetaItem label="Est. Completion" value="Q4 2026" sub="EST. COMPLETION" icon="/icons/stopwatch.png" />
-          <MetaItem label="Starting Price" value="3100 EUR" sub="PER SQ M" icon="/icons/price-tag.png" />
+          <MetaItem label="Ukupna kvadratura" value="3055,26 m²" sub="" icon="/icons/measurement.png" />
+          <MetaItem label="Broj stanova" value="35" sub="" icon="/icons/house-key.png" />
+          <MetaItem label="Procijenjen završetak" value="Q4 2026" sub="" icon="/icons/stopwatch.png" />
+          <MetaItem label="Početna cijena" value="3100 EUR" sub="" icon="/icons/price-tag.png" />
         </div>
       </div>
 
@@ -242,31 +243,34 @@ function Dashboard({
           <div className="grid gap-3 sm:grid-cols-3 h-full">
             <div className="h-full">
               <BuildingProgress
-                title="BUILDING A"
-                subtitle="MIXED-USE"
-                pct={40}
+                title="ZGRADA A"
+                subtitle="STAMBENA UPOTREBA"
+                pct={0}
+                apartments={6}
               />
             </div>
             <div className="h-full">
               <BuildingProgress
-                title="BUILDING B"
-                subtitle="RESIDENTIAL"
-                pct={28}
+                title="ZGRADA B"
+                subtitle="STAMBENA UPOTREBA"
+                pct={0}
+                apartments={6}
               />
             </div>
             <div className="h-full">
               <BuildingProgress
-                title="BUILDING C"
-                subtitle="PARKING / STORAGE"
-                pct={60}
+                title="ZGRADA C"
+                subtitle="STAMBENA UPOTREBA"
+                pct={0}
+                apartments={23}
               />
             </div>
           </div>
         </div>
 
         {/* RIGHT: Icon Pills */}
-        <div className="rounded-xl bg-white/5 p-4 h-full">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70 text-center">
+        <div className="rounded-xl border border-white/10 bg-white/5 p-4 h-full">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-900 text-center">
             Istaknuti elementi dizajna
           </div>
           <div className="mt-4 grid grid-cols-5 gap-2">
@@ -314,11 +318,13 @@ function BuildingProgress({
   subtitle,
   pct,
   highlighted,
+  apartments,
 }: {
   title: string;
   subtitle: string;
   pct: number;
   highlighted?: boolean;
+  apartments: number;
 }) {
   return (
     <div
@@ -340,7 +346,10 @@ function BuildingProgress({
       </div>
 
       <div className="mt-2 text-[0.75rem] font-semibold text-white/70">
-        {pct}% COMPLETE
+        {pct}% NAPREDAK
+      </div>
+      <div className="mt-1 text-xs text-white/50">
+        {apartments} stanova
       </div>
     </div>
   );
@@ -402,7 +411,7 @@ function BuildingCard({ b }: { b: Building }) {
 
       <div className="mt-4">
         <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>Progress</span>
+          <span>Napredak</span>
           <span className="font-semibold text-slate-900 dark:text-slate-100">{b.progress}%</span>
         </div>
         <div className="mt-2">
@@ -410,8 +419,8 @@ function BuildingCard({ b }: { b: Building }) {
         </div>
       </div>
 
-      <div className="mt-4 text-xs text-slate-500 dark:text-slate-400">
-        Tap/click → odabir kata (placeholder flow)
+      <div className="mt-3 text-xs text-slate-600 dark:text-slate-400">
+        {b.apartments} stanova
       </div>
     </Link>
   );

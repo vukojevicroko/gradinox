@@ -36,14 +36,13 @@ export default function ONama() {
           </h1>
 
           <p className="mt-8 text-lg leading-relaxed w-full text-gray-600 text-center">
-            Gradinox Gradnja osnovana je 2025. godine kao odgovor na potrebu za uređenim, odgovornim i profesionalno vođenim građevinskim projektima
-            u okruženju koje često tolerira improvizaciju. Od samog početka, poslovanje tvrtke postavljeno je na jasnim pravilima struke,
-            transparentnoj dokumentaciji i dosljednoj kontroli svake faze gradnje. Iako je riječ o mladoj firmi, odabrali smo ambiciozan,
-            ali promišljen pristup – započeti s jednim projektom koji će postaviti standard, umjesto brzog širenja bez temelja.
-            Projekt Otok upravo je takav primjer: projekt koji je od početne ideje do prezentacije vođen s namjerom da svaka odluka bude razumljiva, provjerljiva i opravdana.
-            Gradinox ne gradi samo objekte, već povjerenje između investitora, kupaca i svih uključenih strana. Naša filozofija nije usmjerena na kratkoročni dobitak,
-            već na dugoročnu reputaciju koja se gradi isključivo dosljednim i korektnim radom. U tom kontekstu, Gradinox Gradnja ne traži povlašteni tretman,
-            već poštenu procjenu svog djelovanja u skladu s pravilima koja sama primjenjuje od prvog dana.
+          Gradinox Gradnja nastala je kao odgovor na potrebu za urednim i odgovornim vođenjem građevinskih projekata. U okruženju u kojem se često toleriraju improvizacije i nejasni procesi, odlučili smo graditi drugačije – sustavno, transparentno i s jasno definiranim pravilima od prvog dana.
+
+          Umjesto brzog širenja bez temelja, odabrali smo promišljen razvoj. Započeti s jednim projektom koji će postaviti standard značilo je uložiti dodatno vrijeme u planiranje, organizaciju i kontrolu svake faze. Svaki korak – od idejnog rješenja do završne izvedbe – mora imati logiku, dokumentaciju i jasnu odgovornost.
+
+          Naš pristup temelji se na precizno strukturiranim procesima, provjerenim partnerima i dosljednoj kontroli kvalitete. Odluke se ne donose impulzivno, već na temelju podataka, tehničkih analiza i dugoročne održivosti projekta. Smatramo da svaka investicija mora biti razumljiva, provjerljiva i opravdana.
+
+          Projekt Otok nije samo početak poslovanja – već temelj na kojem gradimo reputaciju. Reputaciju koja se ne temelji na obećanjima, već na dosljednosti, korektnosti i kvaliteti izvedbe.  
           </p>
         </div>
       </section>

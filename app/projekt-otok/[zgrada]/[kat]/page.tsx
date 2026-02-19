@@ -70,94 +70,151 @@
 
     return (
       <main className="w-full bg-white text-slate-900">
-        <section className="px-6 py-14 md:px-12">
-          <div className="mx-auto w-full max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Projekt Otok / {zgradaLabel}
-            </p>
+        <section className={zgradaId === "c" ? "py-14" : "px-6 py-14 md:px-12"}>
+          <div className={zgradaId === "c" ? "w-full" : "mx-auto w-full max-w-7xl"}>
+            {/* Header section - keep normal padding for C */}
+            <div className={zgradaId === "c" ? "px-6 md:px-12" : ""}>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Projekt Otok / {zgradaLabel}
+              </p>
 
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
-              {katMeta.label}
-            </h1>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+                {katMeta.label}
+              </h1>
 
-            <div className="mt-3 flex flex-wrap gap-3 text-sm">
-              <Link
-                href={`/projekt-otok/${zgradaId}`}
-                className="font-semibold text-slate-700 hover:text-slate-900"
-              >
-                ← Nazad na {zgradaLabel}
-              </Link>
-              <span className="text-slate-300">|</span>
-              <Link
-                href="/projekt-otok"
-                className="font-semibold text-slate-700 hover:text-slate-900"
-              >
-                Projekt Otok overview
-              </Link>
-            </div>
-
-            <div className="mt-10 grid gap-8 lg:grid-cols-2">
-              {/* Tlocrt */}
-              <FloorPlanPins
-  planSrc={planSrc}
-  alt={`${zgradaLabel} — ${katMeta.label} tlocrt`}
-  stanovi={stanoviZaKat}
-  pinovi={pinovi[zgradaId]?.[katId as "0" | "1" | "2"] ?? []}
-/>
-
-
-
-              {/* Lista stanova (klikabilno + status badge) */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                <h2 className="text-lg font-semibold">
-                  Stanovi na {katMeta.label}
-                </h2>
-                <p className="mt-2 text-sm text-slate-600">
-                  Odaberi stan za detaljan prikaz.
-                </p>
-
-                {stanoviZaKat.length === 0 ? (
-                  <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
-                    Nema unesenih stanova za ovu etažu (još). Kad ubaciš podatke,
-                    ovdje će se automatski pojavit.
-                  </div>
-                ) : (
-                  <div className="mt-6 space-y-3">
-                    {stanoviZaKat.map((s) => {
-  const btn = statusButton(s.status);
-
-  return (
-    <div
-      key={s.id}
-      className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3"
-    >
-      <div className="min-w-0">
-        <div className="font-semibold">{s.oznaka}</div>
-        <div className="text-xs text-slate-500">
-          {s.brojSoba} sobe • {s.orijentacija}
-        </div>
-      </div>
-
-      <div className="text-sm font-semibold">{s.povrsina.toFixed(1)} m²</div>
-
-      <Link
-        href={`/projekt-otok/stan/${s.id}`}
-        className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${btn.cls}`}
-      >
-        {btn.label} →
-      </Link>
-    </div>
-  );
-})}
-
-                  </div>
-                )}
-
-                <p className="mt-6 text-xs text-slate-500">
-                  * Klik na stan vodi na podstranicu stana (stabilna verzija).
-                </p>
+              <div className="mt-3 flex flex-wrap gap-3 text-sm">
+                <Link
+                  href={`/projekt-otok/${zgradaId}`}
+                  className="font-semibold text-slate-700 hover:text-slate-900"
+                >
+                  ← Nazad na {zgradaLabel}
+                </Link>
+                <span className="text-slate-300">|</span>
+                <Link
+                  href="/projekt-otok"
+                  className="font-semibold text-slate-700 hover:text-slate-900"
+                >
+                  Projekt Otok overview
+                </Link>
               </div>
             </div>
+
+            {/* Conditional layout: full width for C, side-by-side for A & B */}
+            {zgradaId === "c" ? (
+              <>
+                {/* Full width floor plan for building C */}
+                <div className="mt-10 px-6 md:px-12">
+                  <div className="mx-auto max-w-7xl">
+                    <FloorPlanPins
+                      planSrc={planSrc}
+                      alt={`${zgradaLabel} — ${katMeta.label} tlocrt`}
+                      stanovi={stanoviZaKat}
+                      pinovi={pinovi[zgradaId]?.[katId as "0" | "1" | "2"] ?? []}
+                      zgradaId={zgradaId}
+                    />
+                  </div>
+                </div>
+
+                {/* Lista stanova below the plan - with padding */}
+                <div className="px-6 md:px-12">
+                  <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 mx-auto max-w-7xl">
+                    <h2 className="text-lg font-semibold">
+                      {katMeta.label === "Prizemlje" ? "Stanovi u prizemlju" : `Stanovi na ${katMeta.label.replace(" kat", " katu")}`}
+                    </h2>
+                    <p className="mt-2 text-sm text-slate-600">
+                      Odaberi stan za detaljan prikaz.
+                    </p>
+
+                    {stanoviZaKat.length === 0 ? (
+                      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+                        Nema unesenih stanova za ovu etažu (još). Kad ubaciš podatke,
+                        ovdje će se automatski pojavit.
+                      </div>
+                    ) : (
+                      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                      {stanoviZaKat.map((s) => {
+                        const btn = statusButton(s.status);
+
+                        return (
+                          <div
+                            key={s.id}
+                            className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4"
+                          >
+                            <div className="min-w-0">
+                              <div className="font-semibold">{s.oznaka}</div>
+                              <div className="mt-1 text-sm font-semibold">{s.povrsina.toFixed(1)} m²</div>
+                            </div>
+
+                            <Link
+                              href={`/projekt-otok/stan/${s.id}`}
+                              className={`rounded-full px-4 py-2 text-center text-xs font-semibold transition ${btn.cls}`}
+                            >
+                              {btn.label} →
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              // Original side-by-side layout for buildings A & B
+              <div className="mt-10 grid gap-8 lg:grid-cols-2">
+                {/* Tlocrt */}
+                <FloorPlanPins
+                  planSrc={planSrc}
+                  alt={`${zgradaLabel} — ${katMeta.label} tlocrt`}
+                  stanovi={stanoviZaKat}
+                  pinovi={pinovi[zgradaId]?.[katId as "0" | "1" | "2"] ?? []}
+                  zgradaId={zgradaId}
+                />
+
+                {/* Lista stanova (klikabilno + status badge) */}
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                  <h2 className="text-lg font-semibold">
+                    {katMeta.label === "Prizemlje" ? "Stanovi u prizemlju" : `Stanovi na ${katMeta.label.replace(" kat", " katu")}`}
+                  </h2>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Odaberi stan za detaljan prikaz.
+                  </p>
+
+                  {stanoviZaKat.length === 0 ? (
+                    <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+                      Nema unesenih stanova za ovu etažu (još). Kad ubaciš podatke,
+                      ovdje će se automatski pojavit.
+                    </div>
+                  ) : (
+                    <div className="mt-6 space-y-3">
+                      {stanoviZaKat.map((s) => {
+                        const btn = statusButton(s.status);
+
+                        return (
+                          <div
+                            key={s.id}
+                            className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white px-4 py-3"
+                          >
+                            <div className="min-w-0">
+                              <div className="font-semibold">{s.oznaka}</div>
+                            </div>
+
+                            <div className="text-sm font-semibold">{s.povrsina.toFixed(1)} m²</div>
+
+                            <Link
+                              href={`/projekt-otok/stan/${s.id}`}
+                              className={`shrink-0 rounded-full px-4 py-2 text-xs font-semibold transition ${btn.cls}`}
+                            >
+                              {btn.label} →
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </main>
