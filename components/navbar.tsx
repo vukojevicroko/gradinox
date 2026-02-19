@@ -54,7 +54,6 @@ export default function Navbar() {
       >
         {/* LOGO lijevo */}
         <Link href="/" className="flex items-center gap-3">
-          {/* Placeholder za logo – ti ćeš ovdje ubacit svoj <Image /> */}
           <div
             className={`rounded-full border transition-all duration-300 ${
               isScrolled

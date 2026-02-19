@@ -189,7 +189,9 @@ export function FloorPlanPins({
               <div className="text-sm font-semibold text-slate-900">
                 {typeof active.cijena === "number"
                   ? `${active.cijena.toLocaleString("hr-HR")} €`
-                  : "Cijena na upit"}
+                  : (zgradaId === "a" || zgradaId === "b") 
+                    ? "3500 €/m²" 
+                    : "Prodaja počinje u lipnju 2026."}
               </div>
             </div>
 

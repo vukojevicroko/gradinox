@@ -54,15 +54,15 @@ export default function ONama() {
             Galerija
           </h2>
           <div className="w-full grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <img src="/renders/Image7.png" alt="Render 1" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image8.png" alt="Render 2" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image9.png" alt="Render 3" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image10.png" alt="Render 4" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image11.png" alt="Render 5" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image12.png" alt="Render 6" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image13.png" alt="Render 7" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image14.png" alt="Render 8" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
-            <img src="/renders/Image15.png" alt="Render 9" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" />
+            <img src="/renders/Image7.png" alt="Render 1" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image8.png" alt="Render 2" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image9.png" alt="Render 3" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image10.png" alt="Render 4" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image11.png" alt="Render 5" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image12.png" alt="Render 6" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image13.png" alt="Render 7" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image14.png" alt="Render 8" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
+            <img src="/renders/Image15.png" alt="Render 9" className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow" loading="lazy" />
           </div>
         </div>
       </section>

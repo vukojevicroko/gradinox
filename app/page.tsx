@@ -2,6 +2,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const partners = [
+  { logo: "/images/elektronovus.png", name: "Elektronovus", specialty: "Glavni izvođač radova", website: "" },
+  { logo: "/images/loreta.png", name: "Loreta nekretnine", specialty: "Agencija za prodaju nekretnina", website: "" },
+  { logo: "/images/expert.png", name: "Expert", specialty: "Projektant", website: "" },
+  { logo: "/images/bilkić.jpg", name: "Vodoinstalacije Bilkić", specialty: "Vodointalacije i periferija", website: "" },
+];
 
 export default function HomePage() {
   return (
@@ -93,11 +99,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-16 space-y-16">
           {/* RED 1 – slika lijevo, tekst desno */}
           <div className="grid items-center gap-10 lg:grid-cols-2">
-            {/* Slika / placeholder – ti ćeš tu kasnije ubaciti render / fotku */}
             <div className="fade-in-up">
               <div className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md overflow-hidden w-full">
                 <div className="w-full overflow-hidden rounded-2xl border border-slate-200 shadow-md dark:border-slate-700">
-                {/* Bitno: relative + aspect */}
                   <div className="relative aspect-[4/3] w-full">
                   <Image
                     src="/renders/Image22.png"
@@ -327,7 +331,7 @@ export default function HomePage() {
               {/* SEKCIJA: Partneri i suradnje */}
       <section id="partneri" className=" bg-white py-24 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-4">
-          <div className="fade-in-up flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="fade-in-up flex flex-col gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                 Partneri i suradnje
@@ -336,71 +340,42 @@ export default function HomePage() {
                 Gradimo projekte zajedno s provjerenim partnerima.
               </h2>
               <p className="mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-300">
-                U realizaciji projekata sudjeluju građevinske tvrtke, prodajni
-                i marketinški partneri, kako bi Projekt Otok imao snažnu
-                izvedbu i prisutnost na tržištu.
+                Naši pouzdani partneri koji zajedno s nama rade na realizaciji projekta.
               </p>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Logotipi su prikazani informativno. Stvarni partneri bit će
-              navedeni po dogovoru.
-            </p>
           </div>
 
-          {/* Vrteća kolotura logotipa */}
-          <div className="fade-in-up-delay relative mt-8 overflow-hidden py-4">
-            {/* Blagi fade na rubovima da izgleda premium */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white dark:from-slate-900 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white dark:from-slate-900 to-transparent" />
-
-            <div className="logo-marquee-track gap-10 pr-10">
-              {/* Set 1 */}
-              <div className="flex items-center gap-10">
-                <PartnerBadge label="Građevinski izvođač" sub="Glavni izvedbeni partner" />
-                <PartnerBadge label="Prodajni partner" sub="Agencija za prodaju stanova" />
-                <PartnerBadge label="Marketinška agencija" sub="Brendiranje i promocija projekta" />
-                <PartnerBadge label="Projektantski ured" sub="Arhitektura i projektiranje" />
-                <PartnerBadge label="Nadzorni inženjer" sub="Stručni građevinski nadzor" />
-                <PartnerBadge label="Tehnički savjetnik" sub="Konzalting i dokumentacija" />
+          {/* Partner Grid */}
+          <div className="fade-in-up-delay mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {partners.map((partner, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70 transition-all duration-300 cursor-pointer hover:shadow-lg hover:scale-105 hover:-translate-y-1 origin-center"
+              >
+                <div className="flex-shrink-0 h-16 w-16 overflow-hidden flex items-center justify-center">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{partner.name}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{partner.specialty}</p>
+                  {partner.website && (
+                    <a href={partner.website} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 mt-2 inline-block">{partner.website.replace("https://", "")}</a>
+                  )}
+                </div>
               </div>
-              {/* Dupli set za glatku petlju */}
-              <div className="flex items-center gap-10">
-                <PartnerBadge label="Građevinski izvođač" sub="Glavni izvedbeni partner" />
-                <PartnerBadge label="Prodajni partner" sub="Agencija za prodaju stanova" />
-                <PartnerBadge label="Marketinška agencija" sub="Brendiranje i promocija projekta" />
-                <PartnerBadge label="Projektantski ured" sub="Arhitektura i projektiranje" />
-                <PartnerBadge label="Nadzorni inženjer" sub="Stručni građevinski nadzor" />
-                <PartnerBadge label="Tehnički savjetnik" sub="Konzalting i dokumentacija" />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       </section>
 
-    </div>
-  );
-}
-
-
-function PartnerBadge({ label, sub }: { label: string; sub?: string }) {
-  return (
-    <div className="flex min-w-[180px] items-center gap-3 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-left shadow-sm backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/80">
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[0.6rem] font-semibold uppercase tracking-wide text-slate-50 dark:bg-slate-100 dark:text-slate-900">
-        {/* Ovdje kasnije može ići stvarni logo (slika) */}
-        LOGO
-      </div>
-      <div className="flex flex-col">
-        <span className="text-xs font-semibold text-slate-900 dark:text-slate-50">
-          {label}
-        </span>
-        {sub && (
-          <span className="text-[0.7rem] text-slate-500 dark:text-slate-400">
-            {sub}
-          </span>
-        )}
-      </div>
     </div>
   );
 }

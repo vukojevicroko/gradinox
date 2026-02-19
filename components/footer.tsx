@@ -10,9 +10,6 @@ export default function Footer() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sent");
-
-    // Ovdje kasnije možeš dodati backend mail funkcionalnost
-    // Za sada radimo samo vizualnu simulaciju
     setTimeout(() => setStatus("idle"), 2500);
   };
 
@@ -65,12 +62,9 @@ export default function Footer() {
           <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50">
             Lokacija Projekta Otok
           </h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Horvatova ulica 82, Zagreb
-          </p>
           <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 shadow-md dark:border-slate-700">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.0376889277477!2d15.9891!3d45.7978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d7a9d2e8e8a9%3A0x0!2sHorvatova%20ul.%2082%2C%2010000%2C%20Zagreb!5e0!3m2!1sen!2shr!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.0376889277477!2d15.972639!3d45.763178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDQ1JzQ3LjQiTiAxNcKwNTgnMjEuNSJF!5e0!3m2!1sen!2shr!4v1234567890"
               width="100%"
               height="400"
               style={{ border: 0 }}

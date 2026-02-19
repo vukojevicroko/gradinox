@@ -22,8 +22,8 @@ export default function Dashboard({ projectTitle }: { projectTitle: string }) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <MetaItem label="Ukupna kvadratura" value="3055,26 m²" sub="" icon="/icons/measurement.png" />
           <MetaItem label="Broj stanova" value="35" sub="" icon="/icons/house-key.png" />
-          <MetaItem label="Procijenjen završetak" value="Q4 2026" sub="" icon="/icons/stopwatch.png" />
-          <MetaItem label="Početna cijena" value="3100 EUR" sub="" icon="/icons/price-tag.png" />
+          <MetaItem label="Procijenjen završetak" value="Ljeto 2027" sub="" icon="/icons/stopwatch.png" />
+          <MetaItem label="Početna cijena" value="3500-3800 EUR" sub="" icon="/icons/price-tag.png" />
         </div>
       </div>
 
@@ -49,12 +49,11 @@ export default function Dashboard({ projectTitle }: { projectTitle: string }) {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-900 text-center">
             Istaknuti elementi dizajna
           </div>
-          <div className="mt-4 grid grid-cols-5 gap-2">
-            <IconPill label="ASSETS" />
-            <IconPill label="AMENITIES" />
-            <IconPill label="FLOORS" />
-            <IconPill label="SURFACES" />
-            <IconPill label="SPECS" />
+          <div className="mt-4 grid grid-cols-4 gap-2">
+            <IconPill label="Klime" icon="/icons/air-conditioner.png" />
+            <IconPill label="Protuprovalna vrata" icon="/icons/door.png" />
+            <IconPill label="Talijanske pločie" icon="/icons/tiles.png" />
+            <IconPill label="Plinsko podno grijanje" icon="/icons/heat-wave.png" />
           </div>
         </div>
       </div>
@@ -124,10 +123,14 @@ function BuildingProgress({
   );
 }
 
-function IconPill({ label }: { label: string }) {
+function IconPill({ label, icon }: { label: string; icon?: string }) {
   return (
     <div className="flex flex-col items-center justify-center gap-2 rounded-lg px-2 py-3 text-center">
-      <div className="h-7 w-7 rounded-md bg-slate-400/40" aria-hidden="true" />
+      {icon ? (
+        <img src={icon} alt={label} className="h-7 w-7 object-contain" />
+      ) : (
+        <div className="h-7 w-7 rounded-md bg-slate-400/40" aria-hidden="true" />
+      )}
       <div className="text-[0.65rem] font-semibold tracking-wide text-slate-600">
         {label}
       </div>

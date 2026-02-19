@@ -18,8 +18,8 @@ export default async function StanPage({ params }: Props) {
 
   const kat = katovi.find((k) => k.id === stan.katId);
 
-  // Extract stan number from oznaka (e.g., "Stan 1" -> "1")
-  const stanNumber = stan.oznaka.replace("Stan ", "");
+  // Extract stan number from oznaka (e.g., "Stan A1" -> "1")
+  const stanNumber = stan.oznaka.replace(/Stan [ABC]/i, "");
   const kvadraturaPath = `/kvadratura/kvadratura_${stan.zgradaId}/stan_${stanNumber}.png`;
 
   return (
@@ -48,9 +48,11 @@ export default async function StanPage({ params }: Props) {
           {stan.oznaka}
         </h1>
 
-        <p className="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
-          {stan.seoOpis || "Kratki opis stana – ovdje može ići kasnije tekst koji opisuje raspored, osjećaj prostora, pogled i ključne prednosti. Trenutno je ovo mjesto predviđeno kao SEO-friendly sažetak."}
-        </p>
+        {stan.seoOpis && (
+          <p className="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
+            {stan.seoOpis}
+          </p>
+        )}
 
         <section className="mt-8 max-w-5xl">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">

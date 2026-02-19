@@ -45,34 +45,6 @@ html, body {
   }
 }
 
-/* --- Vrteća kolotura partnera --- */
-
-@keyframes logo-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.logo-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: logo-marquee 28s linear infinite;
-}
-
-.logo-marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo-marquee-track {
-    animation: none;
-    transform: translateX(0);
-  }
-}
-
 /* Maska za dijagonalnu hero sliku */
 .hero-diagonal {
   /* desktop – dijagonalni cut kao na primjeru */
